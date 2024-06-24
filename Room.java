@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Room {
-    private final int MIN_DATE = 1;
-    private final int MAX_DATE = 31;
+    private static final int MIN_DATE = 1;
+    private static final int MAX_DATE = 31;
 
     private String name;
     private double basePrice = 1299.0;
@@ -19,11 +19,11 @@ public class Room {
     }
 
     public int getMinDate() {
-        return this.MIN_DATE;
+        return MIN_DATE;
     }
 
     public int getMaxDate() {
-        return this.MAX_DATE;
+        return MAX_DATE;
     }
 
     public String getName() {
