@@ -2,17 +2,13 @@ public class Reservation {
     private String guestName;
     private int checkInDate;
     private int checkOutDate;
-    private double nightPrice;
-    private double totalPrice;
     private Room room;
     
-    public Reservation(String guestName, int checkInDate, int checkOutDate, double nightPrice, Room room) {
+    public Reservation(String guestName, int checkInDate, int checkOutDate, Room room) {
         this.guestName = guestName;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.nightPrice = nightPrice;
         this.room = room;
-        this.totalPrice = this.nightPrice * (this.checkOutDate - this.checkInDate);
     }
 
     public String getGuestName() {
@@ -32,11 +28,17 @@ public class Reservation {
     }
 
     public double getNightPrice() {
-        return this.nightPrice;
+        return this.room.getPrice();
     }
 
     public double getTotalPrice() {
-        return this.totalPrice;
+        double total = 0;
+        int i;
+
+        for (i = this.checkInDate; i < this.checkOutDate; i++)
+            total += this.room.getPrice();
+
+        return total;
     }
 
 }
