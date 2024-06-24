@@ -259,6 +259,10 @@ public class Hotel {
                 }
             } while (repeat);
         }
+        else if (!available) {
+            System.out.println("Hotel \"" + this.name + "\" has existing reservation/s!");
+            res = false;
+        }
         else {
             System.out.println("Invalid input!");
             res = false;
