@@ -38,24 +38,6 @@ public class Hotel {
     }
 
     /**
-     * Creates a new Hotel object for the given name and creates one room for the hotel.
-     * 
-     * @param name the name of the hotel.
-     */
-    public Hotel(String name) {
-        String roomName;
-        Room room;
-
-        this.name = name;
-        this.roomList = new ArrayList<Room>();
-        this.reservationList = new ArrayList<Reservation>();
-
-        roomName = name.substring(0,1) + 1;
-        room = new Room(roomName);
-        this.roomList.add(room);
-    }
-
-    /**
      * Sorts the rooms in the list of rooms under the hotel object based on their room numbers.
      */
     private void sortRoom() {
@@ -485,7 +467,7 @@ public class Hotel {
             }
         }
         else if (date == Room.getMaxDate()) {
-            System.out.println("No rooms are available for checking-in on the date : 31");
+            System.out.println("No rooms are available for checking-in on the date 31.");
             total = -1;
         }
         else {
