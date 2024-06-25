@@ -18,11 +18,11 @@ public class Room {
             this.availability.add(true);
     }
 
-    public int getMinDate() {
+    public static int getMinDate() {
         return MIN_DATE;
     }
 
-    public int getMaxDate() {
+    public static int getMaxDate() {
         return MAX_DATE;
     }
 
@@ -38,14 +38,24 @@ public class Room {
         return this.availability;
     }
 
+    public void setName(char letter) {
+        this.name = this.name.replace(this.name.charAt(0), letter);
+    }
+
     public void setPrice(double price) {
         this.basePrice = price;
     }
 
-    public void setAvailability(int checkInDate, int checkOutDate, boolean available) {
+    public void setAvailability(int startDate, int endDate, boolean available) {
         int i;
 
-        for (i = checkInDate - 1; i < checkOutDate - 1; i++) 
-            this.availability.set(i, available);
+        if (endDate < MAX_DATE) {
+            for (i = startDate - 1; i < endDate - 1; i++) 
+                this.availability.set(i, available);
+        }
+        else {
+            for (i = startDate - 1; i < endDate; i++) 
+                this.availability.set(i, available);
+        }
     }
 }
