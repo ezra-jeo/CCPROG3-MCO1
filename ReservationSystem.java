@@ -680,7 +680,7 @@ public class ReservationSystem {
     /**
      * Returns the hotel list as an arraylist.
      * 
-     * @return hotelList, arraylist containing the hotels in the system
+     * @return hotelList, arraylist containing the hotels in the system.
      */
     public ArrayList<Hotel> getHotelList() {
         return this.hotelList;
