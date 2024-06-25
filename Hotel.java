@@ -204,10 +204,8 @@ public class Hotel {
                 System.out.println("Room/s has/have been successfully added to hotel \"" + this.name + "\" room list.");
                 repeat = false;
             }
-            else if (input.equalsIgnoreCase("No")) {
-                System.out.println("Going back to system menu.");
+            else if (input.equalsIgnoreCase("No"))
                 repeat = false;
-            }
             else
                 System.out.println("Invalid input.");
         } while (repeat);
@@ -270,13 +268,10 @@ public class Hotel {
                         System.out.println("Room/s has/have been successfully removed from hotel \"" + this.name + "\" room list.");
                         repeat = false;
                     }
-                    else if (input.equalsIgnoreCase("No")) {
-                        System.out.println("Going back to system menu.");
+                    else if (input.equalsIgnoreCase("No"))
                         repeat = false;
-                    }
-                    else {
+                    else
                         System.out.println("Invalid input.");
-                    }
                 } while (repeat);
             }
             else {
@@ -319,13 +314,10 @@ public class Hotel {
                     System.out.println("Room price has been successfuly changed to " + price + " for hotel \"" + this.name + "\".");
                     repeat = false;
                 }
-                else if (input.equalsIgnoreCase("No")) {
-                    System.out.println("Going back to system menu.");
+                else if (input.equalsIgnoreCase("No"))
                     repeat = false;
-                }
-                else {
+                else
                     System.out.println("Invalid input.");
-                }
             } while (repeat);
         }
         else {
@@ -379,14 +371,10 @@ public class Hotel {
                         System.out.println("Reservation of \"" + guestName + "\" in room \"" + room.getName() + "\" from " + checkInDate + " to " + checkOutDate + " has been successfuly confirmed.");
                         repeat = false;
                     }
-                    else if (input.equalsIgnoreCase("No")) {
-                        System.out.println("Going back to system menu.");
-                        result = false;
+                    else if (input.equalsIgnoreCase("No"))
                         repeat = false;
-                    }
-                    else {
+                    else
                         System.out.println("Invalid input.");
-                    }
                 } while (repeat);
             }
             else {
@@ -422,7 +410,7 @@ public class Hotel {
             
             // Asks user for confirmation regarding the modification.
             do {
-                System.out.println("Remove reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + "? (Yes/No): ");
+                System.out.print("Remove reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + "? (Yes/No): ");
                 input = scanner.nextLine();
 
                 if (input.equalsIgnoreCase("Yes")) {
@@ -433,13 +421,10 @@ public class Hotel {
                     System.out.print("Reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + " has been successfuly removed.");
                     repeat = false;
                 }
-                else if (input.equalsIgnoreCase("No")) {
-                    System.out.println("Going back to system menu.");
+                else if (input.equalsIgnoreCase("No"))
                     repeat = false;
-                }
-                else {
+                else
                     System.out.println("Invalid input.");
-                }
             } while (repeat);
         }
         else {
