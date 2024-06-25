@@ -46,111 +46,118 @@ public class ReservationSystem {
         
         // Low level information prompt
             
-            System.out.println("Low Level Information:\n[1] Total Available and Booked Rooms\n[2] Room Information\n[3] Reservation Information\n[Quit] Exit View");
-            System.out.print("Enter the number of the information to display : ");
+        System.out.println("Low Level Information:\n[1] Total Available and Booked Rooms\n[2] Room Information\n[3] Reservation Information\n[Quit] Exit View");
+        System.out.print("Enter the number of the information to display : ");
 
-            choiceInfo = sc.nextLine();
+        choiceInfo = sc.nextLine();
 
-        do {    
-            error = false;
-            try {
-                System.out.print("\nEnter the date to see available and booked rooms (Quit to exit): ");
-                input = sc.nextLine();
-
-                if (!input.equalsIgnoreCase("Quit")) {      
-                    date = Integer.parseInt(input);
-                    totalAvailable = hotel.getTotalAvailableRooms(date);
-                    totalBooked = hotel.getTotalBookedRooms(date);
-
-                    if (totalAvailable != -1 && totalBooked != -1) {
-                        System.out.println("Available Rooms : " + totalAvailable);
-                        System.out.println("Booked Rooms : " + totalBooked);
-                    }
-                    else 
-                        throw new IndexOutOfBoundsException();
-                }
-                
-            }
-            catch (NumberFormatException exception) {
-                System.out.println("Invalid Input. Enter a new input.");
-                error = true;
-            }
-            catch (IndexOutOfBoundsException exception) {
-                error = true;
-            }
-        
-        } while (error) ;
-
-        
-        // Rooms
-
-        // Display
-        System.out.println("\nList of Rooms in \"" + hotel.getName() + "\" : ");
-
-        for (Room room : hotel.getRoomList()) {
-            System.out.println(room.getName());     
-        }
-
-        // Input
-        do {
-            error = false;
-            try {
-                
-                System.out.print("\nEnter the room to get room information (Quit to exit): ");
-                roomName = sc.nextLine();
-                if ( !roomName.equalsIgnoreCase("Quit")) {
-                    roomInfo = hotel.getRoomInfo(hotel.getRoomIndex(roomName));
-                    if (roomInfo != null)
-                        System.out.println(roomInfo);
-                    else
-                        throw new IndexOutOfBoundsException();
-                    
-                }                    
-            }
-            catch (IndexOutOfBoundsException exception) {
-                error = true;
-            }
-        } while (error);
-
-        // Reservation
-        if (hotel.getReservationList().size() > 0) {
-            // Display
-            System.out.println("\nList of Rooms in " + hotel.getName() + " with reservations : ");
-
-            for (int i = 0; i < hotel.getReservationList().size(); i++) {
-                System.out.println("["+(i+1)+"] " + hotel.getReservationList().get(i).getRoom().getName() + " : " + hotel.getReservationList().get(i).getGuestName() + "\nCheck In: " +
-                   hotel.getReservationList().get(i).getCheckInDate() + "\nCheck Out: " + hotel.getReservationList().get(i).getCheckOutDate());
-            }
-            
-            // Input
-            do {
+        if (choiceInfo.equals("1")) {
+            do {    
                 error = false;
                 try {
-                
-                    System.out.print("\nEnter the room to get reservation information (Quit to exit): ");
+                    System.out.print("\nEnter the date to see available and booked rooms (Quit to exit): ");
                     input = sc.nextLine();
-                    
-                    if (!input.equalsIgnoreCase("Quit")) {
-                        reservationIndex = Integer.parseInt(input)-1;
-                        reservationInfo = hotel.getReservationInfo(reservationIndex);
-
-                        if (reservationInfo != null) {
-                            System.out.println(reservationInfo);
+    
+                    if (!input.equalsIgnoreCase("Quit")) {      
+                        date = Integer.parseInt(input);
+                        totalAvailable = hotel.getTotalAvailableRooms(date);
+                        totalBooked = hotel.getTotalBookedRooms(date);
+    
+                        if (totalAvailable != -1 && totalBooked != -1) {
+                            System.out.println("Available Rooms : " + totalAvailable);
+                            System.out.println("Booked Rooms : " + totalBooked);
                         }
-                        else {
+                        else 
                             throw new IndexOutOfBoundsException();
-                        }
                     }
+                    
                 }
                 catch (NumberFormatException exception) {
-                    System.out.println("Invalid Integer Input. Enter New Input.");
+                    System.out.println("Invalid Input. Enter a new input.");
                     error = true;
                 }
                 catch (IndexOutOfBoundsException exception) {
                     error = true;
                 }
-            } while (error);
+            
+            } while (error) ;
+    
         }
+
+        // Rooms
+
+        // Display
+        else if (choiceInfo.equals("2")) {
+            System.out.println("\nList of Rooms in \"" + hotel.getName() + "\" : ");
+
+            for (Room room : hotel.getRoomList()) {
+                System.out.println(room.getName());     
+            }
+    
+            // Input
+            do {
+                error = false;
+                try {
+                    
+                    System.out.print("\nEnter the room to get room information (Quit to exit): ");
+                    roomName = sc.nextLine();
+                    if ( !roomName.equalsIgnoreCase("Quit")) {
+                        roomInfo = hotel.getRoomInfo(hotel.getRoomIndex(roomName));
+                        if (roomInfo != null)
+                            System.out.println(roomInfo);
+                        else
+                            throw new IndexOutOfBoundsException();
+                        
+                    }                    
+                }
+                catch (IndexOutOfBoundsException exception) {
+                    error = true;
+                }
+            } while (error);
+    
+        }
+        // Reservation
+        else if (choiceInfo.equals("3")) {
+            if (hotel.getReservationList().size() > 0) {
+                // Display
+                System.out.println("\nList of Rooms in " + hotel.getName() + " with reservations : ");
+    
+                for (int i = 0; i < hotel.getReservationList().size(); i++) {
+                    System.out.println("["+(i+1)+"] " + hotel.getReservationList().get(i).getRoom().getName() + " : " + hotel.getReservationList().get(i).getGuestName() + "\nCheck In: " +
+                       hotel.getReservationList().get(i).getCheckInDate() + "\nCheck Out: " + hotel.getReservationList().get(i).getCheckOutDate());
+                }
+                
+                // Input
+                do {
+                    error = false;
+                    try {
+                    
+                        System.out.print("\nEnter the room to get reservation information (Quit to exit): ");
+                        input = sc.nextLine();
+                        
+                        if (!input.equalsIgnoreCase("Quit")) {
+                            reservationIndex = Integer.parseInt(input)-1;
+                            reservationInfo = hotel.getReservationInfo(reservationIndex);
+    
+                            if (reservationInfo != null) {
+                                System.out.println(reservationInfo);
+                            }
+                            else {
+                                throw new IndexOutOfBoundsException();
+                            }
+                        }
+                    }
+                    catch (NumberFormatException exception) {
+                        System.out.println("Invalid Integer Input. Enter New Input.");
+                        error = true;
+                    }
+                    catch (IndexOutOfBoundsException exception) {
+                        error = true;
+                    }
+                } while (error);
+            }
+        }
+
     }
 
     public void renameHotel(int index) {
