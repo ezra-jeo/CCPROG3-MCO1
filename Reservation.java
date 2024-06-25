@@ -9,6 +9,8 @@ public class Reservation {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.room = room;
+
+        room.setAvailability(checkInDate, checkOutDate, false);
     }
 
     public String getGuestName() {

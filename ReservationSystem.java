@@ -166,6 +166,7 @@ public class ReservationSystem {
                 String roomName;
                 String verify;
                 ArrayList<Room> roomList = hotel.getRoomList();
+                boolean res = true;
                 
                 // Display the rooms
                 System.out.println("Rooms in " + hotel.getName() + ":");
@@ -173,25 +174,39 @@ public class ReservationSystem {
                 for (Room room : roomList) {
                     System.out.println(room.getName());
                 }
-    
-                // Ask room input
-                do {
-                    System.out.println("\nEnter the room to remove (Quit to exit): ");
-                    roomName = sc.nextLine();
-    
-                    if (hotel.getRoomIndex(roomName) == -1)
-                        System.out.println("The room entered is not in hotel " + hotel.getName() + ".\nEnter a new input.");
 
-                } while (hotel.getRoomIndex(roomName) == -1 && !roomName.equalsIgnoreCase("Quit"));
+                if (roomList.size() > 1) {
+                    do {
+                        System.out.println("\nEnter the room to remove (Quit to exit): ");
+                        roomName = sc.nextLine();
+
+                        if (!roomName.equalsIgnoreCase("Quit"))
+                            res = hotel.removeRoom(hotel.getRoomIndex(roomName));
+                        
+                    } while (res == false && !roomName.equalsIgnoreCase("Quit"));
+                }
+                else {
+                    System.out.println("Hotel has only one room.");
+                    System.out.println("Returning to system menu.");
+                }
+                // Ask room input
+                // do {
+                //     System.out.println("\nEnter the room to remove (Quit to exit): ");
+                //     roomName = sc.nextLine();
+    
+                //     if (hotel.getRoomIndex(roomName) == -1)
+                //         System.out.println("The room entered is not in hotel " + hotel.getName() + ".\nEnter a new input.");
+
+                // } while (hotel.getRoomIndex(roomName) == -1 && !roomName.equalsIgnoreCase("Quit"));
                 
                 // Run removeRoom
-                if (!roomName.equalsIgnoreCase("Quit")) {
-                    System.out.print("Remove room \"" + roomName + "\"?");
-                    verify = sc.nextLine();
+                // if (!roomName.equalsIgnoreCase("Quit")) {
+                //     System.out.print("Remove room \"" + roomName + "\"?");
+                //     verify = sc.nextLine();
 
-                    if (verify.equalsIgnoreCase("Yes"))
-                        hotel.removeRoom(hotel.getRoomIndex(roomName));
-                }
+                //     if (verify.equalsIgnoreCase("Yes"))
+                //         hotel.removeRoom(hotel.getRoomIndex(roomName));
+                // }
             }
             else if (choice.equals("4")) {
                 try{
