@@ -55,7 +55,7 @@ public class ReservationSystem {
 
                 if (!input.equalsIgnoreCase("Quit")) {
                     roomNum = Integer.parseInt(input);
-                    if (roomNum >= Hotel.getMinRoom() && roomNum<= Hotel.getMaxRoom()) {
+                    if (roomNum >= Hotel.getMinRoom() && roomNum <= Hotel.getMaxRoom()) {
                         do {
                             invalid = false;
                             System.out.print("Create hotel \"" + name + "\"? (Yes/No) : ");
@@ -103,8 +103,9 @@ public class ReservationSystem {
         int totalBooked;
         boolean error = false;
         Hotel hotel = hotelList.get(index);
-
-
+        
+        System.out.println("\n================================");
+        System.out.println("\n+++++++++ View Hotel +++++++++++");
         System.out.println("\nHigh Level Information: ");
         System.out.println("Hotel : " + hotel.getName());
         System.out.println("No. of Rooms : " + hotel.getRoomList().size());
@@ -113,7 +114,7 @@ public class ReservationSystem {
         // Low level information prompt
             
         System.out.println("\nLow Level Information:\n[1] Total Available and Booked Rooms\n[2] Room Information\n[3] Reservation Information\n[Quit] Exit View");
-        System.out.print("Enter the number of the information to display : ");
+        System.out.print("\nEnter the number of the information to display : ");
 
         choiceInfo = sc.nextLine();
 
@@ -266,7 +267,10 @@ public class ReservationSystem {
                 this.hotelList.get(index).changeAllRoomName();
             }
         }
+        else {
+            System.out.println("Hotel " + newName + " already exists. Enter New Input.");
 
+        }
     }
 
     /**
@@ -281,7 +285,6 @@ public class ReservationSystem {
         String verify;
         boolean invalid = false;
         Hotel hotel = this.hotelList.get(index);
-
 
         do {
             invalid = false;
@@ -316,7 +319,8 @@ public class ReservationSystem {
         Hotel hotel = this.hotelList.get(index);
         
         do {
-            System.out.println("\nManage Hotel: \n");
+            System.out.println("\n================================");
+            System.out.println("\n++++++++ Manage Hotel ++++++++++\n");
             System.out.println("Options: ");
             System.out.println("[1] Rename Hotel\n[2] Add Room\n[3] Remove Room/s\n[4] Update base price\n[5] Remove Reservation\n[6] Remove Hotel\n[Quit] to exit");
             System.out.print("\nEnter the command to run: ");
@@ -327,7 +331,6 @@ public class ReservationSystem {
                 renameHotel(index);
             }
 
-            // accommodate multiinput.
             else if (choice.equals("2")) {
                 String input;
                 int roomNum = 1;
@@ -337,7 +340,7 @@ public class ReservationSystem {
                     do {
                         error = false;
                         try {
-                            System.out.print("Enter the amount of rooms to add (Quit to exit): ");
+                            System.out.print("\nEnter the amount of rooms to add (Quit to exit): ");
                             input = sc.nextLine();
                             
                             if (!input.equalsIgnoreCase("Quit")) {
@@ -346,7 +349,9 @@ public class ReservationSystem {
                                 if (roomNum + hotel.getRoomList().size() < 50 && roomNum > 0) {
                                     hotel.addRoom(roomNum);
                                 }
-
+                                else {
+                                    System.out.println("Number of Rooms Invalid. Enter New Input.");
+                                }
                             }
                         }   
                         catch (NumberFormatException exception) {
@@ -459,7 +464,7 @@ public class ReservationSystem {
                     } while (error);
                 }
                 else {  
-                    System.out.println("Hotel \"" + hotel.getName() + "\" has existing reservation/s!");
+                    System.out.println("Hotel \"" + hotel.getName() + "\" has existing reservation/s.");
                 }
             }
             else if (choice.equals("5")) {
@@ -525,7 +530,9 @@ public class ReservationSystem {
         boolean result = false;
         int checkInDate = -1;
         int checkOutDate = -1;
-        
+
+        System.out.println("\n================================");
+        System.out.println("\n++++++ Simulate Booking ++++++++");
         System.out.print("\nEnter your name : ");
         guestName = sc.nextLine();
 
@@ -603,7 +610,7 @@ public class ReservationSystem {
 
         do {
             System.out.println("\n================================");
-            System.out.println("\n----Hotel Reservation System----");
+            System.out.println("\n----Hotel Reservation System----\n");
             System.out.println("Processes: "); 
             System.out.println("[1] Create Hotel\n[2] View Hotel\n[3] Manage Hotel\n[4] Simulate Booking\n[Quit] Exit Reservation System");
             System.out.print("\nEnter the number of the process to run : ");
@@ -617,6 +624,8 @@ public class ReservationSystem {
                 
                 do {
                     System.out.println("\n================================");
+                    System.out.println("\n++++++++ Create Hotel ++++++++++");
+
                     System.out.print("\nEnter a hotel name : ");
                     hotelName = sc.nextLine();
     
@@ -651,15 +660,12 @@ public class ReservationSystem {
                             
                             if (hotelIndex != -1) {
                                 if (choice.equals("2")) {
-                                    System.out.println("\n================================");
                                     viewHotel(hotelIndex);
                                 } 
                                 else if (choice.equals("3")) {
-                                    System.out.println("\n================================");
                                     manageHotel(hotelIndex);
                                 }   
                                 else if (choice.equals("4")) {
-                                    System.out.println("\n================================");
                                     simulateBooking(hotelIndex);
                                 }       
                             }
