@@ -85,9 +85,10 @@ public class ReservationSystem {
     }
 
     /**
-     * Displays high level and low level information of a hotel. It assumes the hotel provided exists and is valid.
+     * Displays high level and low level information of a hotel. 
      * 
      * @param index index of the hotel in the hotelList
+     * @pre assumes the hotel provided exists and is valid.
      */
     public void viewHotel(int index) {
         String roomName;
@@ -232,9 +233,10 @@ public class ReservationSystem {
     }
 
     /**
-     * Prompts the user to rename a given hotel. Assumes the hotel provided exists and is valid.
+     * Prompts the user to rename a given hotel.
      * 
      * @param index index of the hotel in the hotelList
+     * @pre assumes the hotel provided exists and is valid.
      */
     public void renameHotel(int index) {
         // Assume index is valid.
@@ -271,9 +273,10 @@ public class ReservationSystem {
     }
 
     /**
-     * Removes a hotel from the hotel list. It assumes the hotel provided exists and is valid.
+     * Removes a hotel from the hotel list.
      * 
      * @param index index of the hotel in the hotelList
+     * @pre assumes the hotel provided exists and is valid.
      */
     public void removeHotel(int index) {
         // Assume index is valid.
@@ -300,12 +303,13 @@ public class ReservationSystem {
     }
 
     /**
-     * Facilitates the 'Manage Hotel' feature of the reservation system. It assumes the hotel provided exists and is valid.
+     * Facilitates the 'Manage Hotel' feature of the reservation system.
      * Prompts the user regarding commands that can be ran to manipulate the characteristics of a hotel.
      * Checks the preconditions before running the command.
      * 
      * 
      * @param index index of the hotel in the hotelList
+     * @pre assumes the hotel provided exists and is valid.
      */
     public void manageHotel(int index) {
         // Assume index is valid.
@@ -513,9 +517,10 @@ public class ReservationSystem {
     }
 
     /**
-     * Simulates how a user can reserve a room in the chosen hotel. It assumes the hotel provided exists and is valid.
+     * Simulates how a user can reserve a room in the chosen hotel.
      * 
      * @param index index of the hotel in the hotelList
+     * @pre assumes the hotel provided exists and is valid.
      */
     public void simulateBooking(int index) {
         Hotel hotel = this.hotelList.get(index);
