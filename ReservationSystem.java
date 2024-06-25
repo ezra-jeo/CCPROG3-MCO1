@@ -34,8 +34,7 @@ public class ReservationSystem {
     // Methods
 
     /**
-     * Prompts the user for the creation of a hotel with a given name.
-     * Adds the hotel instantiated to the hotel list.
+     * Creates a hotel instance with a given name and adds the it to the hotel list.
      * 
      * @param name name of the hotel that is being created.
      */
@@ -86,8 +85,7 @@ public class ReservationSystem {
     }
 
     /**
-     * Displays high level and low level information of a specified hotel.
-     * It assumes the hotel provided exists and is valid.
+     * Displays high level and low level information of a hotel. It assumes the hotel provided exists and is valid.
      * 
      * @param index index of the hotel in the hotelList
      */
@@ -234,8 +232,7 @@ public class ReservationSystem {
     }
 
     /**
-     * Prompts the user to rename the specified hotel.
-     * Assumes the hotel provided exists and is valid.
+     * Prompts the user to rename a given hotel. Assumes the hotel provided exists and is valid.
      * 
      * @param index index of the hotel in the hotelList
      */
@@ -274,8 +271,7 @@ public class ReservationSystem {
     }
 
     /**
-     * Removes a hotel from the hotelList.
-     * Assumes that the hotel given exists and is valid.
+     * Removes a hotel from the hotel list. It assumes the hotel provided exists and is valid.
      * 
      * @param index index of the hotel in the hotelList
      */
@@ -304,10 +300,10 @@ public class ReservationSystem {
     }
 
     /**
-     * Facilitates the 'Manage Hotel' feature of the reservation system.
-     * Assumes that the hotel given exists and is valid.
-     * Prompts the user on the commands it can run to manipulate the characteristics of the hotel provided.
+     * Facilitates the 'Manage Hotel' feature of the reservation system. It assumes the hotel provided exists and is valid.
+     * Prompts the user regarding commands that can be ran to manipulate the characteristics of a hotel.
      * Checks the preconditions before running the command.
+     * 
      * 
      * @param index index of the hotel in the hotelList
      */
@@ -517,8 +513,7 @@ public class ReservationSystem {
     }
 
     /**
-     * Simulates how a user can reserve a room in a specified hotel.
-     * Assumes that the hotel given exists and is valid.
+     * Simulates how a user can reserve a room in the chosen hotel. It assumes the hotel provided exists and is valid.
      * 
      * @param index index of the hotel in the hotelList
      */
@@ -580,7 +575,7 @@ public class ReservationSystem {
     }
 
     /**
-     * Determines if the hotel name provided is an existing hotel and returns its index, -1 otherwise.
+     * Determines if the hotel name provided is from an existing hotel and returns its index, -1 otherwise.
      * 
      * @param name name of the hotel to check
      * @return the index, or -1 if non-existent
@@ -600,9 +595,8 @@ public class ReservationSystem {
 
     /**
      * The runSystem() method facilitates the process of the reservation system.
-     * It prompts the user on what command they wish to run.
-     * Checks the necessary conditions for receiving the hotel name as input. 
-     * Hotel names must be unique.
+     * Prompts the user on commands that can be ran.
+     * Checks the necessary conditions for receiving the hotel name as input (hotel names must be unique).
      * 
      */
     public void runSystem() {
@@ -687,7 +681,6 @@ public class ReservationSystem {
      * The getHotelList method is a getter method returning the hotel list.
      * 
      * @return hotelList, array list of the hotel in the system
-     * 
      */
     public ArrayList<Hotel> getHotelList() {
         return this.hotelList;
