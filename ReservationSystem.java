@@ -24,7 +24,7 @@ public class ReservationSystem {
     // Constructor
 
     /**
-     * Constructor for the ReservationSystem Class
+     * Instantiates an instance of the ReservationSystem class
      * 
      */
     public ReservationSystem() {
