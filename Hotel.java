@@ -40,7 +40,7 @@ public class Hotel {
     /**
      * Sorts the rooms in the list of rooms under the hotel object based on their room numbers.
      */
-    private void sortRoom() {
+    private void sortRoomList() {
         int size = this.roomList.size();
         int i, j;
         int minIndex;
@@ -163,7 +163,7 @@ public class Hotel {
         String input;
         Room room;
 
-        sortRoom();
+        sortRoomList();
 
         // Automatically creates room names based on the number of rooms to be created and based on the sequential room naming of the rooms.
         for (i = 1; i <= numRoom; i++) {
@@ -594,7 +594,7 @@ public class Hotel {
      * @return the arraylist of room object/s under the hotel.
      */
     public ArrayList<Room> getRoomList() {
-        sortRoom();
+        sortRoomList();
 
         return this.roomList;
     }
