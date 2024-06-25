@@ -2,17 +2,43 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The ReservationSystem class contains a collection of hotels throughwhich a user can reserve/book a room.
+ * 
+ */
 public class ReservationSystem {
     // Attributes
+
+    /**
+     * The collection of hotels recorded in the system.
+     * 
+     */
     private ArrayList<Hotel> hotelList;
+
+    /**
+     * The scanner instance used throughout the class.
+     * 
+     */
     Scanner sc = new Scanner(System.in);
 
-    // Constructors
+    // Constructor
+
+    /**
+     * Constructor for the ReservationSystem Class
+     * 
+     */
     public ReservationSystem() {
         this.hotelList = new ArrayList<Hotel>();
     }
 
     // Methods
+
+    /**
+     * Prompts the user for the creation of a hotel with a given name.
+     * Adds the hotel instantiated to the hotel list.
+     * 
+     * @param name name of the hotel that is being created.
+     */
     public void createHotel(String name) {  
 
         String verify;
@@ -29,13 +55,18 @@ public class ReservationSystem {
 
         } while (invalid);
 
-
         if (verify.equalsIgnoreCase("Yes")) {
             Hotel hotel = new Hotel(name);
             this.hotelList.add(hotel);
         }
     }
 
+    /**
+     * Displays high level and low level information of a specified hotel.
+     * It assumes the hotel provided exists and is valid.
+     * 
+     * @param index index of the hotel in the hotelList
+     */
     public void viewHotel(int index) {
         String roomName;
         String choiceInfo;
@@ -48,7 +79,8 @@ public class ReservationSystem {
         int totalBooked;
         boolean error = false;
         Hotel hotel = hotelList.get(index);
-        
+
+        System.out.println("\n--------------------------------");
         System.out.println("\nHigh Level Information: ");
         System.out.println("Hotel : " + hotel.getName());
         System.out.println("No. of Rooms : " + hotel.getRoomList().size());
@@ -111,7 +143,7 @@ public class ReservationSystem {
                     
                     System.out.print("\nEnter the room to get room information (Quit to exit): ");
                     roomName = sc.nextLine();
-                    
+
                     if (!roomName.equalsIgnoreCase("Quit")) {
                         roomInfo = hotel.getRoomInfo(hotel.getRoomIndex(roomName));
 
@@ -170,12 +202,18 @@ public class ReservationSystem {
                 } while (error);
             }
             else {
-                System.out.println("No Existing Reservation. Enter Reservations");
+                System.out.println("No Existing Reservation. Enter Reservations.");
             }
         }
 
     }
 
+    /**
+     * Prompts the user to rename the specified hotel.
+     * Assumes the hotel provided exists and is valid.
+     * 
+     * @param index index of the hotel in the hotelList
+     */
     public void renameHotel(int index) {
         // Assume index is valid.
         
@@ -207,6 +245,12 @@ public class ReservationSystem {
 
     }
 
+    /**
+     * Removes a hotel from the hotelList.
+     * Assumes that the hotel given exists and is valid.
+     * 
+     * @param index index of the hotel in the hotelList
+     */
     public void removeHotel(int index) {
         // Assume index is valid.
 
@@ -232,6 +276,14 @@ public class ReservationSystem {
         }
     }
 
+    /**
+     * Facilitates the 'Manage Hotel' feature of the reservation system.
+     * Assumes that the hotel given exists and is valid.
+     * Prompts the user on the commands it can run to manipulate the characteristics of the hotel provided.
+     * Checks the preconditions before running the command.
+     * 
+     * @param index index of the hotel in the hotelList
+     */
     public void manageHotel(int index) {
         // Assume index is valid.
 
@@ -240,6 +292,7 @@ public class ReservationSystem {
         Hotel hotel = this.hotelList.get(index);
         
         do {
+            System.out.println("\n--------------------------------");
             System.out.println("\nManage Hotel: \n");
             System.out.println("Options: ");
             System.out.println("[1] Rename Hotel\n[2] Add Room\n[3] Remove Room/s\n[4] Update base price\n[5] Remove Reservation\n[6] Remove Hotel\n[Quit] to exit");
@@ -256,7 +309,6 @@ public class ReservationSystem {
                 String input;
                 int roomNum = 1;
                 boolean error = false;
-                boolean result = false;
 
                 if (hotel.getRoomList().size() < 50) {
                     do {
@@ -268,17 +320,13 @@ public class ReservationSystem {
                             if (!input.equalsIgnoreCase("Quit")) {
                                 roomNum = Integer.parseInt(input);
 
-                                if (roomNum + hotel.getRoomList().size() < 50) {
-                                    result = hotel.addRoom(roomNum);
-
-                                    if (result == false) {
-                                        throw new IndexOutOfBoundsException();
-                                    }
+                                if (roomNum + hotel.getRoomList().size() < 50 && roomNum > 0) {
+                                    hotel.addRoom(roomNum);
                                 }
 
                             }
                         }   
-                        catch (InputMismatchException exception) {
+                        catch (NumberFormatException exception) {
                             System.out.println("Invalid Integer Input. Enter New Input");
                             error = true;
                         }
@@ -425,7 +473,7 @@ public class ReservationSystem {
                     } while (error);
                 }
                 else {
-                    System.out.println("No existing reservations. Enter Reservations");
+                    System.out.println("No existing reservations. Enter Reservations.");
                 }
             }
             else if (choice.equals("6")) {
@@ -440,15 +488,22 @@ public class ReservationSystem {
 
     }
 
+    /**
+     * Simulates how a user can reserve a room in a specified hotel.
+     * Assumes that the hotel given exists and is valid.
+     * 
+     * @param index index of the hotel in the hotelList
+     */
     public void simulateBooking(int index) {
         Hotel hotel = this.hotelList.get(index);
         String input = "";
-        String guestName;
+        String guestName = "";
         boolean error;
         boolean result = false;
         int checkInDate = -1;
         int checkOutDate = -1;
         
+        System.out.println("\n--------------------------------");
         System.out.print("\nEnter your name : ");
         guestName = sc.nextLine();
 
@@ -495,6 +550,12 @@ public class ReservationSystem {
         } while (result == false && !input.equalsIgnoreCase("Quit"));
     }
 
+    /**
+     * Determines if the hotel name provided is an existing hotel and returns its index, -1 otherwise.
+     * 
+     * @param name name of the hotel to check
+     * @return the index, or -1 if non-existent
+     */
     public int isExisting(String name) {
         
         int result = -1;
@@ -508,22 +569,18 @@ public class ReservationSystem {
         return result;
     }
 
-    public int isExisting(int index) {
-        
-        int result = -1;
-
-        if (index < this.hotelList.size()) {
-            result = index;
-        }
-
-        return result;
-    }
-
+    /**
+     * The runSystem() method facilitates the process of the reservation system.
+     * It prompts the user on what command they wish to run.
+     * Checks the necessary conditions for receiving the hotel name as input. 
+     * Hotel names must be unique.
+     * 
+     */
     public void runSystem() {
         String choice;
 
         do {
-
+            System.out.println("\n--------------------------------");
             System.out.println("\n----Hotel Reservation System----");
             System.out.println("Processes: "); 
             System.out.println("[1] Create Hotel\n[2] View Hotel\n[3] Manage Hotel\n[4] Simulate Booking\n[Quit] Exit Reservation System");
@@ -594,18 +651,13 @@ public class ReservationSystem {
         } while (!choice.equalsIgnoreCase("Quit"));
     }
 
+    /**
+     * The getHotelList method is a getter method returning the hotel list.
+     * 
+     * @return hotelList, array list of the hotel in the system
+     * 
+     */
     public ArrayList<Hotel> getHotelList() {
         return this.hotelList;
     }
-
-    public ArrayList<String> getHotelNames() {
-        ArrayList<String> hotelNames = new ArrayList<String>();
-        
-        for (Hotel hotel : hotelList) {
-            hotelNames.add(hotel.getName());
-        }
-
-        return hotelNames;
-    }
-
 }
