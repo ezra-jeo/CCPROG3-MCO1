@@ -210,7 +210,7 @@ public class Hotel {
             for (String roomName : roomNameList)
                 System.out.print("\"" + roomName + "\", ");
 
-            System.out.print("\b\b to hotel \"" + this.name + "\" room list? (Yes/No) : ");
+            System.out.print("\b\b to hotel \"" + this.name + "\" room list? (Yes/No): ");
             input = scanner.nextLine();   
 
             if (input.equalsIgnoreCase("Yes")) {
@@ -219,15 +219,15 @@ public class Hotel {
                     room = new Room(roomName);
                     this.roomList.add(room);
                 }
-                System.out.println("Room/s has/have been successfully added to hotel \"" + this.name + "\" room list!");
+                System.out.println("Room/s has/have been successfully added to hotel \"" + this.name + "\" room list.");
                 repeat = false;
             }
             else if (input.equalsIgnoreCase("No")) {
-                System.out.println("Going back to system menu...");
+                System.out.println("Going back to system menu.");
                 repeat = false;
             }
             else
-                System.out.println("Invalid input!");
+                System.out.println("Invalid input.");
         } while (repeat);
     }
 
@@ -240,7 +240,7 @@ public class Hotel {
      */
     public boolean removeRoom(ArrayList<Integer> indexList) {
         Scanner scanner = new Scanner(System.in);
-        boolean res = true;
+        boolean result = true;
         boolean repeat = true;
         boolean available = true;
         boolean valid = true;
@@ -276,7 +276,7 @@ public class Hotel {
                     for (Integer index : indexList)
                         System.out.print("\"" + this.roomList.get(index).getName() + "\", ");
         
-                    System.out.print("\b\b from hotel \"" + this.name + "\" room list? (Yes/No) : ");
+                    System.out.print("\b\b from hotel \"" + this.name + "\" room list? (Yes/No): ");
                     input = scanner.nextLine();   
 
                     if (input.equalsIgnoreCase("Yes")) {
@@ -285,29 +285,29 @@ public class Hotel {
                             roomList.add(this.roomList.get(index)); // Adds the concerned rooms to a list.
 
                         this.roomList.removeAll(roomList); // Using the list to removed the concerned rooms.
-                        System.out.println("Room/s has/have been successfully removed from hotel \"" + this.name + "\" room list!");
+                        System.out.println("Room/s has/have been successfully removed from hotel \"" + this.name + "\" room list.");
                         repeat = false;
                     }
                     else if (input.equalsIgnoreCase("No")) {
-                        System.out.println("Going back to system menu...");
+                        System.out.println("Going back to system menu.");
                         repeat = false;
                     }
                     else {
-                        System.out.println("Invalid input!");
+                        System.out.println("Invalid input.");
                     }
                 } while (repeat);
             }
             else {
-                System.out.println("Chosen room/s has/have an active reservation!");
-                res = false;
+                System.out.println("Chosen room/s has/have an active reservation.");
+                result = false;
             }
         }
         else {
-            System.out.println("Invalid input!");
-            res = false;
+            System.out.println("Invalid input.");
+            result = false;
         }
 
-        return res;
+        return result;
     }
 
     /**
@@ -319,7 +319,7 @@ public class Hotel {
      */
     public boolean updateRoomPrice(double price) {
         Scanner scanner = new Scanner(System.in);
-        boolean res = true;
+        boolean result = true;
         boolean repeat = true;
         String input;
 
@@ -327,31 +327,31 @@ public class Hotel {
         if (price >= 100) {
             // Asks user for confirmation regarding the modification.
             do {
-                System.out.print("Change room price to " + price + " for hotel \"" + this.name + "\"? (Yes/No) : ");
+                System.out.print("Change room price to " + price + " for hotel \"" + this.name + "\"? (Yes/No): ");
                 input = scanner.nextLine();
 
                 if (input.equalsIgnoreCase("Yes")) {
                     // Changes the price of all the rooms.
                     for (Room room : this.roomList)
                         room.setPrice(price);
-                    System.out.println("Room price has been successfuly changed to " + price + " for hotel \"" + this.name + "\"!");
+                    System.out.println("Room price has been successfuly changed to " + price + " for hotel \"" + this.name + "\".");
                     repeat = false;
                 }
                 else if (input.equalsIgnoreCase("No")) {
-                    System.out.println("Going back to system menu...");
+                    System.out.println("Going back to system menu.");
                     repeat = false;
                 }
                 else {
-                    System.out.println("Invalid input!");
+                    System.out.println("Invalid input.");
                 }
             } while (repeat);
         }
         else {
-            System.out.println("Invalid input!");
-            res = false;
+            System.out.println("Invalid input.");
+            result = false;
         }
 
-        return res;
+        return result;
     }
 
     /**
@@ -364,7 +364,7 @@ public class Hotel {
      */
     public boolean addReservation(String guestName, int checkInDate, int checkOutDate) {
         Scanner scanner = new Scanner(System.in);
-        boolean res = true;
+        boolean result = true;
         boolean repeat = true;
         boolean available = false;
         int i = 0;
@@ -387,37 +387,37 @@ public class Hotel {
 
                 // Asks user for confirmation regarding the reservation.
                 do {
-                    System.out.print("Confirm reservation of \"" + guestName + "\" in room \"" + room.getName() + "\" from " + checkInDate + " to " + checkOutDate + "? (Yes/No) : ");
+                    System.out.print("Confirm reservation of \"" + guestName + "\" in room \"" + room.getName() + "\" from " + checkInDate + " to " + checkOutDate + "? (Yes/No): ");
                     input = scanner.nextLine();
 
                     if (input.equalsIgnoreCase("Yes")) {
                         // Creates a reservation and adds to the list of reservations.
                         Reservation reservation = new Reservation(guestName, checkInDate, checkOutDate, room);
                         this.reservationList.add(reservation);
-                        System.out.println("Reservation of \"" + guestName + "\" in room \"" + room.getName() + "\" from " + checkInDate + " to " + checkOutDate + " has been successfuly confirmed!");
+                        System.out.println("Reservation of \"" + guestName + "\" in room \"" + room.getName() + "\" from " + checkInDate + " to " + checkOutDate + " has been successfuly confirmed.");
                         repeat = false;
                     }
                     else if (input.equalsIgnoreCase("No")) {
-                        System.out.println("Going back to system menu...");
-                        res = false;
+                        System.out.println("Going back to system menu.");
+                        result = false;
                         repeat = false;
                     }
                     else {
-                        System.out.println("Invalid input!");
+                        System.out.println("Invalid input.");
                     }
                 } while (repeat);
             }
             else {
                 System.out.println("There is no room available for " + checkInDate + " to " + checkOutDate + ".");
-                res = false;
+                result = false;
             }
         }
         else {
-            System.out.println("Invalid input!");
-            res = false;
+            System.out.println("Invalid input.");
+            result = false;
         }
 
-        return res;
+        return result;
     }
 
     /**
@@ -429,7 +429,7 @@ public class Hotel {
      */
     public boolean removeReservation(int index) {
         Scanner scanner = new Scanner(System.in);
-        boolean res = true;
+        boolean result = true;
         boolean repeat = true;
         String input;
         Reservation reservation;
@@ -440,7 +440,7 @@ public class Hotel {
             
             // Asks user for confirmation regarding the modification.
             do {
-                System.out.println("Remove reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + "? (Yes/No) : ");
+                System.out.println("Remove reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + "? (Yes/No): ");
                 input = scanner.nextLine();
 
                 if (input.equalsIgnoreCase("Yes")) {
@@ -448,24 +448,24 @@ public class Hotel {
                     reservation.getRoom().setAvailability(reservation.getCheckInDate(), reservation.getCheckOutDate(), true);
                     // Removes the reservation from the list.
                     this.reservationList.remove(index);
-                    System.out.println("Reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + " has been successfuly removed!");
+                    System.out.print("Reservation of \"" + reservation.getGuestName() + "\" in room \"" + reservation.getRoom().getName() + "\" from " + reservation.getCheckInDate()+ " to " + reservation.getCheckOutDate() + " has been successfuly removed.");
                     repeat = false;
                 }
                 else if (input.equalsIgnoreCase("No")) {
-                    System.out.println("Going back to system menu...");
+                    System.out.println("Going back to system menu.");
                     repeat = false;
                 }
                 else {
-                    System.out.println("Invalid input!");
+                    System.out.println("Invalid input.");
                 }
             } while (repeat);
         }
         else {
-            System.out.println("Invalid input!");
-            res = false;
+            System.out.println("Invalid input.");
+            result = false;
         }
 
-        return res;
+        return result;
     }
 
     /**
@@ -489,7 +489,7 @@ public class Hotel {
             total = -1;
         }
         else {
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input.");
             total = -1;
         }
 
@@ -513,7 +513,7 @@ public class Hotel {
             }
         }
         else {
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input.");
             total = -1;
         }
 
@@ -553,10 +553,10 @@ public class Hotel {
                 roomInfo += "\b\b ";
             }
             else 
-                System.out.println("None");
+                roomInfo += "None";
         }
         else {
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input.");
             roomInfo = null;
         }
 
@@ -587,7 +587,7 @@ public class Hotel {
             reservationInfo += "\n" + getRoomInfo(roomIndex);
         }
         else {
-            System.out.println("Invalid input!");
+            System.out.println("Invalid input.");
             reservationInfo = null;
         }
 
