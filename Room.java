@@ -1,12 +1,11 @@
+import java.util.ArrayList;
+
 /**
  * The Room class represents the hotel room entity in the hotel reservation system.
  * It has a name, which is unique to the hotel, a base price, which is the cost per night, 
  * and a list of availability, which represents its availability across the entire month,
  * with respect to the minimum and maximum date reservation value.
  */
-
-import java.util.ArrayList;
-
 public class Room {
     private static final int MIN_DATE = 1;
     private static final int MAX_DATE = 31; 
