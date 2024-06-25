@@ -309,8 +309,6 @@ public class ReservationSystem {
                                 }
                                 else
                                     System.out.println("Rooms to remove exceeds the limit.");
-
-
                             }
                         }
                         catch (IndexOutOfBoundsException exception) {
