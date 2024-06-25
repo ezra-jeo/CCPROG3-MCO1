@@ -167,12 +167,10 @@ public class Hotel {
      * Creates and adds a number of rooms to the list of rooms under the hotel object based on the given number.
      * 
      * @param numRoom the number of rooms to create and add to the list of rooms.
-     * @return true always.
      * @pre adding numRoom to the list will not exceed the maximum number of rooms for the hotel object.
      */
-    public boolean addRoom(int numRoom) {
+    public void addRoom(int numRoom) {
         Scanner scanner = new Scanner(System.in);
-        boolean res = true;
         boolean repeat = true;
         boolean roomExists;
         int size = this.roomList.size();
@@ -231,8 +229,6 @@ public class Hotel {
             else
                 System.out.println("Invalid input!");
         } while (repeat);
-       
-        return res;
     }
 
     /**
