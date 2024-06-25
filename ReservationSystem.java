@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * The ReservationSystem class contains a collection of hotels throughwhich a user can reserve/book a room.
+ * The ReservationSystem class contains a collection of hotels through which a user can reserve/book a room.
  * 
  */
 public class ReservationSystem {
@@ -42,23 +42,47 @@ public class ReservationSystem {
     public void createHotel(String name) {  
 
         String verify;
+        String input;
+        int roomNum;
         boolean invalid = true;
+        boolean error;
+
         do {
-            invalid = false;
-            System.out.print("Create hotel \"" + name + "\"? (Yes/No) : ");
-            verify = sc.nextLine();
+            error = false;
+            try {
+                System.out.print("\nEnter the number of rooms (Quit to exit): ");
+                input = sc.nextLine();
 
-            if (!verify.equalsIgnoreCase("Yes") && !verify.equalsIgnoreCase("No")) {
-                System.out.println("Invalid Input. Enter a New Input.");
-                invalid = true;
+                if (!input.equalsIgnoreCase("Quit")) {
+                    roomNum = Integer.parseInt(input);
+                    if (roomNum >= Hotel.getMinRoom() && roomNum<= Hotel.getMaxRoom()) {
+                        do {
+                            invalid = false;
+                            System.out.print("Create hotel \"" + name + "\"? (Yes/No) : ");
+                            verify = sc.nextLine();
+                
+                            if (!verify.equalsIgnoreCase("Yes") && !verify.equalsIgnoreCase("No")) {
+                                System.out.println("Invalid Input. Enter a New Input.");
+                                invalid = true;
+                            }
+                        } while (invalid);
+
+                        if (verify.equalsIgnoreCase("Yes")) {
+                            Hotel hotel = new Hotel(name, roomNum);
+                            this.hotelList.add(hotel);
+                        }
+                    }
+                    else {
+                        System.out.println("Invalid Room Number. Enter New Input");
+                        error = true;
+                    }
+                } 
             }
-
-        } while (invalid);
-
-        if (verify.equalsIgnoreCase("Yes")) {
-            Hotel hotel = new Hotel(name);
-            this.hotelList.add(hotel);
-        }
+            catch(NumberFormatException exception) {
+                System.out.println("Invalid Integer Input. Enter New Input.");
+                error = true;
+            }
+        } while (error);
     }
 
     /**
@@ -80,7 +104,7 @@ public class ReservationSystem {
         boolean error = false;
         Hotel hotel = hotelList.get(index);
 
-        System.out.println("\n--------------------------------");
+
         System.out.println("\nHigh Level Information: ");
         System.out.println("Hotel : " + hotel.getName());
         System.out.println("No. of Rooms : " + hotel.getRoomList().size());
@@ -286,13 +310,12 @@ public class ReservationSystem {
      */
     public void manageHotel(int index) {
         // Assume index is valid.
-
+        
         String choice;
         boolean quit = false;
         Hotel hotel = this.hotelList.get(index);
         
         do {
-            System.out.println("\n--------------------------------");
             System.out.println("\nManage Hotel: \n");
             System.out.println("Options: ");
             System.out.println("[1] Rename Hotel\n[2] Add Room\n[3] Remove Room/s\n[4] Update base price\n[5] Remove Reservation\n[6] Remove Hotel\n[Quit] to exit");
@@ -503,7 +526,6 @@ public class ReservationSystem {
         int checkInDate = -1;
         int checkOutDate = -1;
         
-        System.out.println("\n--------------------------------");
         System.out.print("\nEnter your name : ");
         guestName = sc.nextLine();
 
@@ -580,7 +602,7 @@ public class ReservationSystem {
         String choice;
 
         do {
-            System.out.println("\n--------------------------------");
+            System.out.println("\n================================");
             System.out.println("\n----Hotel Reservation System----");
             System.out.println("Processes: "); 
             System.out.println("[1] Create Hotel\n[2] View Hotel\n[3] Manage Hotel\n[4] Simulate Booking\n[Quit] Exit Reservation System");
@@ -593,7 +615,8 @@ public class ReservationSystem {
                 String hotelName;
                 int hotelIndex = -1;
                 
-                do {    
+                do {
+                    System.out.println("\n================================");
                     System.out.print("\nEnter a hotel name : ");
                     hotelName = sc.nextLine();
     
@@ -613,7 +636,7 @@ public class ReservationSystem {
                 if (this.hotelList.size() > 0) {
                     String hotelName;
                     int hotelIndex = -1;
-    
+                    System.out.println("\n================================");
                     System.out.println("\nList of Hotels: ");
                     for (int i = 0; i < this.hotelList.size(); i++) {
                         System.out.println(this.hotelList.get(i).getName());
@@ -628,12 +651,15 @@ public class ReservationSystem {
                             
                             if (hotelIndex != -1) {
                                 if (choice.equals("2")) {
+                                    System.out.println("\n================================");
                                     viewHotel(hotelIndex);
                                 } 
                                 else if (choice.equals("3")) {
+                                    System.out.println("\n================================");
                                     manageHotel(hotelIndex);
                                 }   
                                 else if (choice.equals("4")) {
+                                    System.out.println("\n================================");
                                     simulateBooking(hotelIndex);
                                 }       
                             }
