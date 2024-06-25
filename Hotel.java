@@ -171,7 +171,7 @@ public class Hotel {
             res = false;
         }
 
-        scanner.close();
+        
         return res;
     }
 
@@ -219,7 +219,7 @@ public class Hotel {
             res = false;
         }
 
-        scanner.close();
+        
         return res;
     }
 
@@ -268,7 +268,7 @@ public class Hotel {
             res = false;
         }
 
-        scanner.close();
+        
         return res;
     }
 
@@ -327,7 +327,7 @@ public class Hotel {
             res = false;
         }
 
-        scanner.close();
+        
         return res;
     }
 
@@ -366,7 +366,7 @@ public class Hotel {
             res = false;
         }
 
-        scanner.close();
+        
         return res;
     }
 
