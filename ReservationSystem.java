@@ -678,9 +678,9 @@ public class ReservationSystem {
     }
 
     /**
-     * The getHotelList method is a getter method returning the hotel list.
+     * Returns the hotel list as an arraylist.
      * 
-     * @return hotelList, array list of the hotel in the system
+     * @return hotelList, arraylist containing the hotels in the system
      */
     public ArrayList<Hotel> getHotelList() {
         return this.hotelList;
