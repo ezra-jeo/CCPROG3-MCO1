@@ -498,7 +498,8 @@ public class Hotel {
         String roomInfo;
         Room room;
         ArrayList<Boolean> availability;
-        int i;
+        boolean available = false;
+        int i = 0;
 
         if (index >= 0 && index < this.roomList.size()) {
             room = this.roomList.get(index);
@@ -510,8 +511,15 @@ public class Hotel {
 
             availability = room.getAvailability();
             
-            // Checks if there is an avaiable date.
-            if (availability.size() > 0) {
+            // Checks if there is an available date.
+            while (i < availability.size() && !available) {
+                if (availability.get(index) == true)
+                    available = true;
+
+                i++;
+            }
+
+            if (available) {
                 // Loops through the list of availability of the room and stores the available dates.
                 for (i = 0; i < availability.size(); i++) {
                     if (availability.get(i))
