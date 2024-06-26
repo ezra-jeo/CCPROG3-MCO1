@@ -8,7 +8,16 @@ import java.util.Scanner;
  */
 public class ReservationSystem {
 
+    /**
+     * Collection of hotels stored in the system.
+     * 
+     */
     private ArrayList<Hotel> hotelList;
+
+    /**
+     * Scanner instance which is used in all of the inputs in the reservation system.
+     * 
+     */
     private Scanner sc = new Scanner(System.in);
 
     /**
@@ -33,12 +42,12 @@ public class ReservationSystem {
         boolean error;
 
         do {
-            error = false;
-            try {
-                System.out.print("\nEnter the number of rooms (Quit to exit): ");
+            error = false; // Error Flag
+            try { 
+                System.out.print("\nEnter the number of rooms (Quit to exit): "); // Prompts for the number of rooms of the hotel during instantiation.
                 input = sc.nextLine();
 
-                if (!input.equalsIgnoreCase("Quit")) {
+                if (!input.equalsIgnoreCase("Quit")) { 
                     roomNum = Integer.parseInt(input);
                     if (roomNum >= Hotel.getMinRoom() && roomNum <= Hotel.getMaxRoom()) {
                         do {
@@ -522,7 +531,7 @@ public class ReservationSystem {
         guestName = sc.nextLine();
 
         do {
-
+            // Guest name
             do { 
                 error = false;
 
@@ -539,6 +548,7 @@ public class ReservationSystem {
                 }
             } while (error);
 
+            // Check in and Check out
             if (!input.equalsIgnoreCase("Quit")) {
                 do {
                     error = false;
@@ -599,7 +609,8 @@ public class ReservationSystem {
             System.out.print("\nEnter the number of the process to run : ");
     
             choice = sc.nextLine();
-    
+            
+            // Options and various method runs
             if (choice.equals("1")) {
                 
                 String hotelName;
