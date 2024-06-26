@@ -9,7 +9,7 @@ public class Main {
     /**
      * Driver method that runs the program.
      * 
-     * @param args
+     * @param args string array containing the command-line arguments passed.
      */
     public static void main(String[] args) {
         ReservationSystem rs = new ReservationSystem();
