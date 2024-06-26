@@ -1,12 +1,11 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * The Hotel class represents the hotel entity in the hotel reservation system.
  * It has a name, which is unique from the other hotels in the system, a list of rooms, with
  * respect to the minimum and maximum number of rooms in a hotel, and a list of reservations.
  */
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Hotel {
     private static final int MIN_ROOM = 1;
     private static final int MAX_ROOM = 50;
@@ -39,6 +38,7 @@ public class Hotel {
 
     /**
      * Sorts the rooms in the list of rooms under the hotel object based on their room numbers.
+     * 
      */
     private void sortRoomList() {
         int size = this.roomList.size();
@@ -68,12 +68,12 @@ public class Hotel {
 
     /**
      * Checks if the given room is available within the given range of check-in and check-out date.
+     * Pre-condition: checkInDate is before checkOut, and checkInDate and checkOutDate is within the range of the minimum and maximum date reservation values.
      * 
      * @param room the room object to be checked whether is available or not.
      * @param checkInDate the starting date to consider the availability of the room object.
      * @param checkOutDate the ending date to consider the availability of the room object.
      * @return true if the given room is available within the given range and false otherwise.
-     * @pre checkInDate is before checkOut, and checkInDate and checkOutDate is within the range of the minimum and maximum date reservation values.
      */
     public boolean checkAvailability(Room room, int checkInDate, int checkOutDate) {
         boolean available = true;
@@ -113,6 +113,7 @@ public class Hotel {
 
     /**
      * Changes the name of all the rooms under the hotel object based on the initial letter of the name of the hotel object.
+     * 
      */
     public void changeAllRoomName() {
         for (Room room : this.roomList) {
@@ -147,9 +148,9 @@ public class Hotel {
 
     /**
      * Creates and adds a number of rooms to the list of rooms under the hotel object based on the given number.
+     * Pre-condition: adding numRoom to the list will not exceed the maximum number of rooms for the hotel object.
      * 
      * @param numRoom the number of rooms to create and add to the list of rooms.
-     * @pre adding numRoom to the list will not exceed the maximum number of rooms for the hotel object.
      */
     public void addRoom(int numRoom) {
         Scanner scanner = new Scanner(System.in);
@@ -213,10 +214,10 @@ public class Hotel {
 
     /**
      * Removes a number of available rooms based on the given list of room index from the list of rooms.
+     * Pre-condition: removing a number of available rooms will not make the hotel room list empty.
      * 
      * @param indexList the list of index of the rooms to be removed.
      * @return true if the list of index is valid and false otherwise.
-     * @pre removing a number of available rooms will not make the hotel room list empty.
      */
     public boolean removeRoom(ArrayList<Integer> indexList) {
         Scanner scanner = new Scanner(System.in);
@@ -289,10 +290,10 @@ public class Hotel {
 
     /**
      * Updates the prices of all the rooms under the hotel object.
+     * Pre-condition: all of the rooms under the hotel object is available.
      * 
      * @param price the new price to be set across all the rooms.
      * @return true if the given price is valid and false otherwise.
-     * @pre all of the rooms under the hotel object is available.
      */
     public boolean updateRoomPrice(double price) {
         Scanner scanner = new Scanner(System.in);
@@ -392,10 +393,10 @@ public class Hotel {
 
     /**
      * Removes a reservation from the list of reservations under the hotel object given the reservation index from the list.
+     * Pre-condition: there is an existing reservation under the hotel object.
      * 
      * @param index the index of the reservation from the list of reservations.
      * @return true if index value is valid and false otherwise.
-     * @pre there is an existing reservation under the hotel object.
      */
     public boolean removeReservation(int index) {
         Scanner scanner = new Scanner(System.in);
@@ -626,9 +627,9 @@ public class Hotel {
 
     /**
      * Sets the name of the hotel object with the given name.
+     * Pre-condition: name is unique from the other hotels in the system.
      * 
      * @param name the name to be used to replace the name of the hotel.
-     * @pre name is unique from the other hotels in the system.
      */
     public void setName(String name) {
         this.name = name;

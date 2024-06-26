@@ -1,5 +1,5 @@
 /**
- * The Main class creates and instantiates the reservation system and calls the necessary methods.
+ * The Main class creates, instantiates, and executes the entire hotel reservation system.
  * 
  * @author Ethan Axl S. Burayag
  * @author Ezra Jeonadab G. Del Rosario

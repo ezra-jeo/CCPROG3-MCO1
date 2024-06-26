@@ -2,7 +2,6 @@
  * The Reservation class represents the reservation entity in the hotel reservation system.
  * It has the guest name, the check-in and check-out dates, and the information on the reserved room.
  */
-
 public class Reservation {
     private String guestName;
     private int checkInDate;

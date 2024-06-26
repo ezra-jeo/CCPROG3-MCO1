@@ -3,40 +3,26 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * The ReservationSystem class contains a collection of hotels through which a user can reserve/book a room.
- * 
+ * The ReservationSystem class represents the main reservation system in the hotel reservation system.
+ * It contains a collection of hotels through which a user can reserve/book a room.
  */
 public class ReservationSystem {
-    // Attributes
 
-    /**
-     * The collection of hotels recorded in the system.
-     * 
-     */
     private ArrayList<Hotel> hotelList;
+    private Scanner sc = new Scanner(System.in);
 
     /**
-     * The scanner instance used throughout the class.
-     * 
-     */
-    Scanner sc = new Scanner(System.in);
-
-    // Constructor
-
-    /**
-     * Instantiates an instance of the ReservationSystem class
+     * Instantiates an instance of the ReservationSystem class.
      * 
      */
     public ReservationSystem() {
         this.hotelList = new ArrayList<Hotel>();
     }
 
-    // Methods
-
     /**
      * Creates a hotel instance with a given name and adds the it to the hotel list.
      * 
-     * @param name name of the hotel that is being created.
+     * @param name the name of the hotel that is being created.
      */
     public void createHotel(String name) {  
 
@@ -86,9 +72,9 @@ public class ReservationSystem {
 
     /**
      * Displays high level and low level information of a hotel. 
+     * Pre-condition: the hotel index provided exists based from the hotel list and is valid.
      * 
-     * @param index index of the hotel in the hotelList
-     * @pre assumes the hotel provided exists and is valid.
+     * @param index the index of the hotel in the hotelList.
      */
     public void viewHotel(int index) {
         String roomName;
@@ -234,9 +220,9 @@ public class ReservationSystem {
 
     /**
      * Prompts the user to rename a given hotel.
+     * Pre-condition: the hotel index provided exists based from the hotel list and is valid.
      * 
-     * @param index index of the hotel in the hotelList
-     * @pre assumes the hotel provided exists and is valid.
+     * @param index the index of the hotel in the hotelList.
      */
     public void renameHotel(int index) {
         // Assume index is valid.
@@ -274,9 +260,9 @@ public class ReservationSystem {
 
     /**
      * Removes a hotel from the hotel list.
+     * Pre-condition: the hotel index provided exists based from the hotel list and is valid.
      * 
-     * @param index index of the hotel in the hotelList
-     * @pre assumes the hotel provided exists and is valid.
+     * @param index the index of the hotel in the hotelList.
      */
     public void removeHotel(int index) {
         // Assume index is valid.
@@ -306,10 +292,9 @@ public class ReservationSystem {
      * Facilitates the 'Manage Hotel' feature of the reservation system.
      * Prompts the user regarding commands that can be ran to manipulate the characteristics of a hotel.
      * Checks the preconditions before running the command.
+     * Pre-condition: the hotel index provided exists based from the hotel list and is valid.
      * 
-     * 
-     * @param index index of the hotel in the hotelList
-     * @pre assumes the hotel provided exists and is valid.
+     * @param index the index of the hotel in the hotelList.
      */
     public void manageHotel(int index) {
         // Assume index is valid.
@@ -518,9 +503,9 @@ public class ReservationSystem {
 
     /**
      * Simulates how a user can reserve a room in the chosen hotel.
+     * Pre-condition: the hotel index provided exists based from the hotel list and is valid.
      * 
-     * @param index index of the hotel in the hotelList
-     * @pre assumes the hotel provided exists and is valid.
+     * @param index the index of the hotel in the hotelList.
      */
     public void simulateBooking(int index) {
         Hotel hotel = this.hotelList.get(index);
@@ -582,7 +567,7 @@ public class ReservationSystem {
     /**
      * Determines if the hotel name provided is from an existing hotel and returns its index, -1 otherwise.
      * 
-     * @param name name of the hotel to check
+     * @param name the name of the hotel to check.
      * @return the index, or -1 if non-existent
      */
     public int isExisting(String name) {
@@ -599,10 +584,9 @@ public class ReservationSystem {
     }
 
     /**
-     * The runSystem() method facilitates the process of the reservation system.
+     * Facilitates the process of the reservation system.
      * Prompts the user on commands that can be ran.
      * Checks the necessary conditions for receiving the hotel name as input (hotel names must be unique).
-     * 
      */
     public void runSystem() {
         String choice;

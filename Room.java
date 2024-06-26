@@ -85,9 +85,9 @@ public class Room {
 
     /**
      * Sets the base price of the room object to the given price value.
+     * Pre-condition: price is greater than or equal to 100.0.
      * 
      * @param price the price to use to set the base price of the room.
-     * @pre price is greater than or equal to 100.0.
      */
     public void setPrice(double price) {
         this.basePrice = price;
@@ -95,11 +95,11 @@ public class Room {
 
     /**
      * Sets the availability status of the room object for a range of dates in a list based on the provided start and end dates.
+     * Pre-condition: startDate is before endDate, and startDate and endDate is within the range of the minimum and maximum date reservation values.
      * 
      * @param startDate the starting date for which availability of the room object needs to be set.
      * @param endDate the ending date for which availability of the room object needs to be considered.
      * @param available the availability status to set the availability of the room object.
-     * @pre startDate is before endDate, and startDate and endDate is within the range of the minimum and maximum date reservation values.
      */
     public void setAvailability(int startDate, int endDate, boolean available) {
         int i;
