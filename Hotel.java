@@ -7,11 +7,35 @@ import java.util.Scanner;
  * respect to the minimum and maximum number of rooms in a hotel, and a list of reservations.
  */
 public class Hotel {
+
+    /**
+     * The minimum number of rooms in a hotel class.
+     * 
+     */
     private static final int MIN_ROOM = 1;
+
+    /**
+     * The maximum number of rooms in a hotel class.
+     * 
+     */
     private static final int MAX_ROOM = 50;
 
+    /**
+     * The name of the hotel object.
+     * 
+     */
     private String name;
+
+    /**
+     * The list of rooms under the hotel object.
+     * 
+     */
     private ArrayList<Room> roomList;
+
+    /**
+     * The list of reservations under the hotel object.
+     * 
+     */
     private ArrayList<Reservation> reservationList;
 
     /**

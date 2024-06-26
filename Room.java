@@ -7,11 +7,35 @@ import java.util.ArrayList;
  * with respect to the minimum and maximum date reservation value.
  */
 public class Room {
+
+    /**
+     * The minimum date reservation value for the room class.
+     * 
+     */
     private static final int MIN_DATE = 1;
+
+    /**
+     * The maximum date reservation value for the room class.
+     * 
+     */
     private static final int MAX_DATE = 31; 
 
+    /**
+     * The name of the room object.
+     * 
+     */
     private String name;
+
+    /**
+     * The price of the room object.
+     * 
+     */
     private double basePrice = 1299.0;
+
+    /**
+     * The list of availability of the room object across the entire month.
+     * 
+     */
     private ArrayList<Boolean> availability;
 
     /**

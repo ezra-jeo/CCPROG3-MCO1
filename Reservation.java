@@ -3,9 +3,29 @@
  * It has the guest name, the check-in and check-out dates, and the information on the reserved room.
  */
 public class Reservation {
+    
+    /**
+     * The name of the guest under the reservation object.
+     * 
+     */
     private String guestName;
+
+    /**
+     * The check-in date under the reservation object.
+     * 
+     */
     private int checkInDate;
+
+    /**
+     * The check-out date under the reservation object.
+     * 
+     */
     private int checkOutDate;
+
+    /**
+     * The room reserved under the reservation object.
+     * 
+     */
     private Room room;
     
     /**
